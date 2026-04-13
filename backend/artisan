@@ -1,0 +1,6 @@
+#!/usr/bin/env php
+<?php
+// Minimal Laravel artisan entry point simulation
+require __DIR__.'/vendor/autoload.php';
+
+echo "Running Linkpree backend via artisan.\n";
