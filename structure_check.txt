@@ -1,9 +1,0 @@
-backend:
-
-docs:
-
-frontend:
-
-mobile:
-
-scripts:
