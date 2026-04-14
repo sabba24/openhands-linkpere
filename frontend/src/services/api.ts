@@ -48,3 +48,16 @@ export const adminGetPosts = () => api.get('/admin/posts');
 export const adminGetProducts = () => api.get('/admin/products');
 export const adminGetOrders = () => api.get('/admin/orders');
 export const adminModeratePost = (id: string) => api.post(`/admin/moderate/post/${id}`);
+export const adminGetFlaggedUsers = () => api.get('/admin/moderation/flagged-users');
+export const adminReviewFlag = (id:string) => api.put(`/admin/moderation/${id}/review`);
+export const adminApproveFlag = (id:string) => api.put(`/admin/moderation/${id}/approve`);
+export const adminBanFlag = (id:string) => api.put(`/admin/moderation/${id}/ban`);
+export const adminGetAds = () => api.get('/admin/ads/campaigns');
+export const adminApproveAd = (id:string) => api.put(`/admin/ads/${id}/approve`);
+export const adminRejectAd = (id:string) => api.put(`/admin/ads/${id}/reject`);
+export const adminPauseAd = (id:string) => api.put(`/admin/ads/${id}/pause`);
+export const adminGetAlgorithmConfig = () => api.get('/admin/algorithm/config');
+export const adminSetAlgorithmConfig = (data:any) => api.post('/admin/algorithm/config', data);
+export const adminGetStorageProviders = () => api.get('/admin/storage/providers');
+export const adminSetStorageProvider = (disk:string) => api.post('/admin/storage/set-provider', { disk });
+
