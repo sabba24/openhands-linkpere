@@ -22,4 +22,12 @@ class AdminController extends Controller
         StorageProvider::setDefault($disk);
         return response()->json(['success'=>true, 'active'=>$disk]);
     }
+    public function getAlgorithmConfig() {
+        $cfg = \App\Models\AlgorithmConfig::current();
+        return response()->json($cfg);
+    }
+    public function setAlgorithmConfig(Request $request) {
+        $cfg = \App\Models\AlgorithmConfig::create($request->only(['engagement_weight', 'view_boost_multiplier', 'ranking_formula']));
+        return response()->json($cfg);
+    }
 }

@@ -92,4 +92,7 @@ Route::middleware(['auth:sanctum','role:admin'])->group(function() {
     Route::put('/admin/moderation/{id}/review', [App\Http\Controllers\ModerationController::class, 'review']);
     Route::put('/admin/moderation/{id}/approve', [App\Http\Controllers\ModerationController::class, 'approve']);
     Route::put('/admin/moderation/{id}/ban', [App\Http\Controllers\ModerationController::class, 'ban']);
+    // Algorithm config
+    Route::get('/admin/algorithm/config', [App\Http\Controllers\AdminController::class, 'getAlgorithmConfig']);
+    Route::post('/admin/algorithm/config', [App\Http\Controllers\AdminController::class, 'setAlgorithmConfig']);
 });
