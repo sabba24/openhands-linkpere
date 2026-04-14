@@ -8,6 +8,15 @@ Route::post('/login', [App\Http\Controllers\AuthController::class, 'login']);
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
 Route::post('/forgot-password', [App\Http\Controllers\AuthController::class, 'forgotPassword']);
 
+// Live/Battle/Podium
+Route::post('/live/start', [\App\Http\Controllers\LiveController::class, 'start'])->middleware('auth:sanctum');
+Route::post('/live/{id}/join', [\App\Http\Controllers\LiveController::class, 'join'])->middleware('auth:sanctum');
+Route::post('/live/{id}/chat', [\App\Http\Controllers\LiveController::class, 'chat'])->middleware('auth:sanctum');
+Route::post('/live/{id}/gift', [\App\Http\Controllers\LiveController::class, 'sendGift'])->middleware('auth:sanctum');
+Route::post('/live/{id}/battle', [\App\Http\Controllers\LiveController::class, 'battle'])->middleware('auth:sanctum');
+Route::post('/live/{id}/finish', [\App\Http\Controllers\LiveController::class, 'finish'])->middleware('auth:sanctum');
+Route::get('/live/leaderboard', [\App\Http\Controllers\LiveController::class, 'leaderboard']);
+
 // USERS & PROFILES
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user', [App\Http\Controllers\UserController::class, 'me']);
