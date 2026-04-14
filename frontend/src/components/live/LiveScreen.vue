@@ -21,10 +21,39 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
-const chat = ref([]), msgInput = ref(''), podium = ref([]), battle = ref(null)
-function sendMsg() {}
-function sendGift() {}
+import { ref, onMounted, onUnmounted } from 'vue'
+import liveSocket from '../../services/liveSocket'
+const chat = ref([]), msgInput = ref(''), podium = ref([]), battle = ref(null), user = ref('user')
+let socket = null
+
+function sendMsg() {
+  if (msgInput.value && socket) {
+    socket.emit('live:chat', { msg: msgInput.value })
+    msgInput.value = ''
+  }
+}
+function sendGift() {
+  if (socket) socket.emit('live:gift', { type: 'rose', amount: 1 })
+}
+onMounted(() => {
+  socket = liveSocket.connectLiveSocket('<token>')
+  socket.emit('join', 'live.123')
+  socket.on('live:chat', data => {
+    chat.value.push({ user: data.user, text: data.message })
+  })
+  socket.on('live:gift', data => {
+    // update gift/podium if needed
+  })
+  socket.on('live:battle', data => {
+    battle.value = data
+  })
+})
+onUnmounted(() => {
+  if (socket) {
+    socket.emit('leave', 'live.123')
+    socket.disconnect()
+  }
+})
 </script>
 <style scoped>
 .live-main{background:#0B0F1A; color:#fff; padding:0; height:100vh; position:relative;}

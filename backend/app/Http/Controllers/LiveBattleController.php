@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\LiveBattle;
 use Illuminate\Support\Facades\Auth;
+use App\Events\LiveBattleScoreEvent;
 
 class LiveBattleController extends Controller {
     public function start(Request $request) {
@@ -31,6 +32,15 @@ class LiveBattleController extends Controller {
         if ($user == $battle->user1_id) $battle->user1_score += $score;
         elseif ($user == $battle->user2_id) $battle->user2_score += $score;
         $battle->save();
+        broadcast(new LiveBattleScoreEvent(
+            $battle->id,
+            $battle->user1_id,
+            $battle->user2_id,
+            $battle->user1_score,
+            $battle->user2_score,
+            $battle->status,
+            $battle->winner_id
+        ));
         return response()->json($battle);
     }
     public function end($battle_id, Request $request) {

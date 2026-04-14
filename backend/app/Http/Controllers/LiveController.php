@@ -5,6 +5,8 @@ use App\Models\LiveGift;
 use App\Models\LiveLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Events\LiveChatMessageEvent;
+use App\Events\LiveGiftEvent;
 
 class LiveController extends Controller {
     public function start(Request $request) {
@@ -34,6 +36,7 @@ class LiveController extends Controller {
             'type' => 'chat',
             'data' => ['user_id'=>Auth::id(),'msg'=>$request->msg],
         ]);
+        broadcast(new LiveChatMessageEvent($id, Auth::user()->name, $request->msg));
         return response()->json($log);
     }
     public function sendGift($id, Request $request) {
@@ -46,6 +49,7 @@ class LiveController extends Controller {
         ]);
         $session = LiveSession::findOrFail($id);
         $session->increment('gift_total', $request->amount ?? 1);
+        broadcast(new LiveGiftEvent($id, Auth::user()->name, $request->gift_type, $request->amount ?? 1));
         return response()->json($gift);
     }
     public function battle($id, Request $request) {

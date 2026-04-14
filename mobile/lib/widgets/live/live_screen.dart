@@ -1,5 +1,39 @@
 import 'package:flutter/material.dart';
-class LiveScreen extends StatelessWidget {
+import '../../services/live_socket_service.dart';
+
+class LiveScreen extends StatefulWidget {
+  @override
+  State<LiveScreen> createState() => _LiveScreenState();
+}
+class _LiveScreenState extends State<LiveScreen> {
+  final LiveSocketService liveSocket = LiveSocketService();
+  final TextEditingController inputCtrl = TextEditingController();
+  List<Map<String, String>> chat = [];
+
+  @override
+  void initState() {
+    super.initState();
+    liveSocket.connect('userToken');
+    liveSocket.joinRoom('live.123');
+    liveSocket.onChat((data) {
+      setState(() {
+        chat.add({'user': data['user'], 'msg': data['message']});
+      });
+    });
+  }
+  @override
+  void dispose() {
+    liveSocket.leaveRoom('live.123');
+    liveSocket.disconnect();
+    super.dispose();
+  }
+  void sendMsg() {
+    if (inputCtrl.text.isNotEmpty) {
+      liveSocket.sendChat(inputCtrl.text);
+      inputCtrl.clear();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,12 +47,24 @@ class LiveScreen extends StatelessWidget {
             color: Color(0xDD121826),
             child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('Live Chat', style: TextStyle(color: Colors.white)),
-              Container(height:87, child: ListView(children:[Text('msg1',style:TextStyle(color:Colors.white))])),
+              Container(
+                height:87,
+                child: ListView(
+                  children: chat
+                    .map((m)=>Text('${m['user']}: ${m['msg']}', style:TextStyle(color:Colors.white)))
+                    .toList(),
+                ),
+              ),
               Row(children:[
-                Expanded(child: TextField(decoration: InputDecoration(hintText:'Type...',hintStyle:TextStyle(color:Color(0xFFA1A1AA)))),),
-                IconButton(onPressed:()=>{},icon:Icon(Icons.send,color:Color(0xFF6366F1)))
+                Expanded(child:
+                  TextField(
+                    controller: inputCtrl,
+                    decoration: InputDecoration(hintText:'Type...',hintStyle:TextStyle(color:Color(0xFFA1A1AA)))
+                  ),
+                ),
+                IconButton(onPressed:sendMsg,icon:Icon(Icons.send,color:Color(0xFF6366F1)))
               ]),
-              ElevatedButton(onPressed:()=>{},child:Text('Send Gift 🎁')), 
+              ElevatedButton(onPressed:()=>liveSocket.sendGift('rose',1),child:Text('Send Gift 🎁')), 
             ]),
           ),
         ),
