@@ -1,0 +1,1 @@
+This file will trigger creation of theme/ on move. See next step.
