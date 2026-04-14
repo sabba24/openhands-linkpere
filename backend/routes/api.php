@@ -38,6 +38,12 @@ Route::middleware('auth:sanctum')->group(function() {
     
     // FEED & SOCIAL
     Route::get('/feed', [App\Http\Controllers\FeedController::class, 'feed']);
+// Comment upgrades
+Route::post('/comment/gift', [\App\Http\Controllers\CommentGiftController::class, 'send'])->middleware('auth:sanctum');
+Route::post('/comment/gif', [\App\Http\Controllers\CommentGifController::class, 'send'])->middleware('auth:sanctum');
+Route::post('/comment/voice', [\App\Http\Controllers\CommentVoiceNoteController::class, 'send'])->middleware('auth:sanctum');
+Route::post('/comment/emoji', [\App\Http\Controllers\CommentEmojiReactionController::class, 'send'])->middleware('auth:sanctum');
+
     Route::post('/posts', [App\Http\Controllers\PostController::class, 'store']);
     Route::get('/posts/{id}', [App\Http\Controllers\PostController::class, 'show']);
     Route::post('/posts/{id}/like', [App\Http\Controllers\PostController::class, 'like']);
