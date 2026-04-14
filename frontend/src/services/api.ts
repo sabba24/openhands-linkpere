@@ -1,31 +1,50 @@
 import axios from 'axios';
 
+const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+
 export const api = axios.create({
-  baseURL: '/api',
-  timeout: 14000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: API_BASE,
+  withCredentials: true,
 });
 
-export const fetchFeed = async () => {
-  // Will connect to backend, now simulate delay and sample
-  // Replace this with: return (await api.get('/feed')).data;
-  return new Promise(resolve => setTimeout(()=>resolve([
-    { id: 1, url: '/videos/sample1.mp4', user: { name: 'AvaCreator', avatar: '/avatars/ava1.jpg' }, caption: 'Discover LINKPREE!', likes: 112, comments: [{user:'max',text:'🔥 love it!'},{user:'jane',text:'Cool'}], shares: 9, shop: true, product: {name: 'Viral Tee', price: 27, image: '/products/tee.jpg'}},
-    { id: 2, url: '/videos/sample2.mp4', user: { name: 'MaxTrend', avatar: '/avatars/ava2.jpg' }, caption: 'Shop now in feed!', likes: 203, comments: [{user:'ava',text:'Great store'}], shares: 5, shop: true, product: {name: 'Creator Cap', price: 17, image: '/products/cap.jpg'}}
-  ]),800));
-};
+export const login = (credentials: {email: string; password: string}) => api.post('/login', credentials);
+export const register = (data: any) => api.post('/register', data);
+export const logout = () => api.post('/logout');
+export const forgotPassword = (email: string) => api.post('/forgot-password', {email});
+export const getCurrentUser = () => api.get('/user');
+export const updateProfile = (data: any) => api.put('/user', data);
+export const fetchProfile = (id: string) => api.get(`/profiles/${id}`);
 
-export const likeVideo = async (id:number) => {
-  // return api.post(`/videos/${id}/like`);
-  return true;
-};
-export const addComment = async (id:number, comment:{user:string,text:string}) => {
-  // return api.post(`/videos/${id}/comment`, comment);
-  return true;
-};
-export const shareVideo = async (id:number) => {
-  // return api.post(`/videos/${id}/share`);
-  return true;
-};
+export const fetchFeed = (params: any) => api.get('/feed', { params });
+export const createPost = (data: any) => api.post('/posts', data);
+export const getPost = (id: string) => api.get(`/posts/${id}`);
+export const likePost = (id: string) => api.post(`/posts/${id}/like`);
+export const unlikePost = (id: string) => api.delete(`/posts/${id}/like`);
+export const commentPost = (id: string, comment: any) => api.post(`/posts/${id}/comments`, comment);
+export const followUser = (id: string) => api.post(`/follow/${id}`);
+export const unfollowUser = (id: string) => api.delete(`/follow/${id}`);
+export const fetchNotifications = () => api.get('/notifications');
+
+export const getConversations = () => api.get('/conversations');
+export const sendMessage = (data: any) => api.post('/messages', data);
+export const getMessages = (id: string) => api.get(`/messages/${id}`);
+
+export const getProducts = (params: any={}) => api.get('/products', { params });
+export const getProduct = (id: string) => api.get(`/products/${id}`);
+export const createProduct = (data: any) => api.post('/products', data);
+export const getCategories = () => api.get('/categories');
+export const addToCart = (data: any) => api.post('/cart', data);
+export const viewCart = () => api.get('/cart');
+export const addToWishlist = (data: any) => api.post('/wishlist', data);
+export const getWishlist = () => api.get('/wishlist');
+export const checkout = (data: any) => api.post('/checkout', data);
+export const getOrders = () => api.get('/orders');
+export const getOrder = (id: string) => api.get(`/orders/${id}`);
+export const getSellerOrders = () => api.get('/seller/orders');
+export const getSellerProducts = () => api.get('/seller/products');
+
+export const adminGetUsers = () => api.get('/admin/users');
+export const adminGetPosts = () => api.get('/admin/posts');
+export const adminGetProducts = () => api.get('/admin/products');
+export const adminGetOrders = () => api.get('/admin/orders');
+export const adminModeratePost = (id: string) => api.post(`/admin/moderate/post/${id}`);
