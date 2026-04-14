@@ -1,0 +1,155 @@
+mobile/lib:
+total 48
+-rw-r--r--  1 openhands openhands 1793 Apr 14 04:15 app.dart
+drwxr-xr-x  2 openhands openhands 4096 Apr 14 04:19 config
+drwxr-xr-x  2 openhands openhands 4096 Apr 14 04:19 core
+-rw-r--r--  1 openhands openhands  104 Apr 14 04:15 main.dart
+drwxr-xr-x  2 openhands openhands 4096 Apr 14 04:13 models
+drwxr-xr-x  2 openhands openhands 4096 Apr 14 04:19 providers
+drwxr-xr-x  2 openhands openhands 4096 Apr 14 04:19 routes
+drwxr-xr-x 12 openhands openhands 4096 Apr 14 04:32 screens
+drwxr-xr-x  2 openhands openhands 4096 Apr 14 04:32 services
+drwxr-xr-x  2 openhands openhands 4096 Apr 14 04:19 theme
+drwxr-xr-x  2 openhands openhands 4096 Apr 14 04:19 utils
+drwxr-xr-x  5 openhands openhands 4096 Apr 14 04:32 widgets
+
+mobile/lib/config:
+total 0
+
+mobile/lib/core:
+total 0
+
+mobile/lib/models:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:13 order.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:13 post.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:13 product.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:13 user.dart
+
+mobile/lib/providers:
+total 0
+
+mobile/lib/routes:
+total 4
+-rw-r--r-- 1 openhands openhands 975 Apr 14 04:19 app_routes.dart
+
+mobile/lib/screens:
+total 84
+-rw-r--r-- 1 openhands openhands 1921 Apr 14 04:16 auth_login.dart
+-rw-r--r-- 1 openhands openhands 2242 Apr 14 04:16 auth_register.dart
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 buyer
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 cart
+-rw-r--r-- 1 openhands openhands    0 Apr 14 04:13 cart.dart
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 chat
+-rw-r--r-- 1 openhands openhands 1279 Apr 14 04:24 edit_profile.dart
+-rw-r--r-- 1 openhands openhands  366 Apr 14 04:15 feed.dart
+-rw-r--r-- 1 openhands openhands 1781 Apr 14 04:20 forgot_password.dart
+-rw-r--r-- 1 openhands openhands  687 Apr 14 04:20 home.dart
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 marketplace
+-rw-r--r-- 1 openhands openhands  798 Apr 14 04:16 marketplace.dart
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 messages
+-rw-r--r-- 1 openhands openhands    0 Apr 14 04:13 messaging.dart
+-rw-r--r-- 1 openhands openhands  866 Apr 14 04:25 notifications.dart
+-rw-r--r-- 1 openhands openhands 1600 Apr 14 04:20 onboarding.dart
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 orders
+-rw-r--r-- 1 openhands openhands    0 Apr 14 04:13 orders.dart
+-rw-r--r-- 1 openhands openhands    0 Apr 14 04:13 product_detail.dart
+-rw-r--r-- 1 openhands openhands 2337 Apr 14 04:21 profile.dart
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 seller
+-rw-r--r-- 1 openhands openhands    0 Apr 14 04:13 seller_dashboard.dart
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 settings
+-rw-r--r-- 1 openhands openhands  798 Apr 14 04:20 splash.dart
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 upload
+-rw-r--r-- 1 openhands openhands    0 Apr 14 04:13 user_dashboard.dart
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 wishlist
+
+mobile/lib/screens/buyer:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 buyer_dashboard.dart
+
+mobile/lib/screens/cart:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 cart.dart
+
+mobile/lib/screens/chat:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 conversation.dart
+
+mobile/lib/screens/marketplace:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 product_detail.dart
+
+mobile/lib/screens/messages:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 messages.dart
+
+mobile/lib/screens/orders:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 orders.dart
+
+mobile/lib/screens/seller:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 seller_dashboard.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 seller_products.dart
+
+mobile/lib/screens/settings:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 settings.dart
+
+mobile/lib/screens/upload:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 create_post.dart
+
+mobile/lib/screens/wishlist:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 wishlist.dart
+
+mobile/lib/services:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:13 api.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:13 auth.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 auth_service.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:13 feed.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 feed_service.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:13 marketplace.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 marketplace_service.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 message_service.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 notification_service.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 order_service.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 profile_service.dart
+
+mobile/lib/theme:
+total 8
+-rw-r--r-- 1 openhands openhands   65 Apr 14 04:19 README.md
+-rw-r--r-- 1 openhands openhands 1242 Apr 14 04:19 app_theme.dart
+
+mobile/lib/utils:
+total 0
+
+mobile/lib/widgets:
+total 28
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 action_buttons
+-rw-r--r-- 1 openhands openhands  684 Apr 14 04:20 app_bar.dart
+-rw-r--r-- 1 openhands openhands    0 Apr 14 04:13 app_button.dart
+-rw-r--r-- 1 openhands openhands 1124 Apr 14 04:20 bottom_nav.dart
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 empty
+drwxr-xr-x 2 openhands openhands 4096 Apr 14 04:32 loading
+-rw-r--r-- 1 openhands openhands    0 Apr 14 04:13 message_bubble.dart
+-rw-r--r-- 1 openhands openhands    0 Apr 14 04:32 message_tile.dart
+-rw-r--r-- 1 openhands openhands    0 Apr 14 04:32 notification_tile.dart
+-rw-r--r-- 1 openhands openhands 1927 Apr 14 04:32 product_card.dart
+-rw-r--r-- 1 openhands openhands 1842 Apr 14 04:15 video_card.dart
+
+mobile/lib/widgets/action_buttons:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 comment_button.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 like_button.dart
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 share_button.dart
+
+mobile/lib/widgets/empty:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 empty_state.dart
+
+mobile/lib/widgets/loading:
+total 0
+-rw-r--r-- 1 openhands openhands 0 Apr 14 04:32 loading_indicator.dart
