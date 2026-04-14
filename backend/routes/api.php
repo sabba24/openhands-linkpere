@@ -85,4 +85,6 @@ Route::middleware(['auth:sanctum','role:admin'])->group(function() {
     Route::get('/admin/products', [App\Http\Controllers\AdminController::class, 'products']);
     Route::get('/admin/orders', [App\Http\Controllers\AdminController::class, 'orders']);
     Route::post('/admin/moderate/post/{id}', [App\Http\Controllers\AdminController::class, 'moderatePost']);
+    Route::get('/admin/storage/providers', [App\Http\Controllers\AdminController::class, 'storageProviders']);
+    Route::post('/admin/storage/set-provider', [App\Http\Controllers\AdminController::class, 'setStorageProvider']);
 });
