@@ -22,6 +22,12 @@ class LiveGiftController extends Controller {
         ]);
         $session = LiveSession::find($data['live_session_id']);
         $session->increment('gift_total', $data['amount']);
+        // Update leaderboard
+        $ranking = \App\Models\LiveRanking::firstOrCreate([
+            'user_id' => Auth::id(),
+        ]);
+        $ranking->gift_points += $data['amount'];
+        $ranking->save();
         return response()->json($gift);
     }
     public function gifts($session_id) {

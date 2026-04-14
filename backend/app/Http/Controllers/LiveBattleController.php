@@ -45,4 +45,9 @@ class LiveBattleController extends Controller {
         $battles = LiveBattle::with(['liveSession','winner'])->latest()->take(50)->get();
         return response()->json($battles);
     }
+
+    public function podium(Request $request) {
+        $rankings = \App\Models\LiveRanking::orderByDesc('gift_points')->limit(10)->get();
+        return response()->json($rankings);
+    }
 }

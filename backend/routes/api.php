@@ -31,6 +31,8 @@ Route::post('/live/battle/{id}/score', [\App\Http\Controllers\LiveBattleControll
 Route::post('/live/battle/{id}/end', [\App\Http\Controllers\LiveBattleController::class, 'end'])->middleware('auth:sanctum');
 Route::get('/live/battle/list', [\App\Http\Controllers\LiveBattleController::class, 'list']);
 
+Route::get('/live/battle/podium', [\App\Http\Controllers\LiveBattleController::class, 'podium']);
+
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user', [App\Http\Controllers\UserController::class, 'me']);
     Route::put('/user', [App\Http\Controllers\UserController::class, 'update']);

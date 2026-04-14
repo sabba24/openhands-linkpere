@@ -17,6 +17,10 @@ class LiveController extends Controller {
             'settings' => $request->settings,
             'start_time' => now()
         ]);
+        if ($request->is_battle && $request->opponent_id) {
+          $session->opponent_id = $request->opponent_id;
+          $session->save();
+        }
         return response()->json($session);
     }
     public function join($id) {
