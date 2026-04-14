@@ -95,4 +95,16 @@ Route::middleware(['auth:sanctum','role:admin'])->group(function() {
     // Algorithm config
     Route::get('/admin/algorithm/config', [App\Http\Controllers\AdminController::class, 'getAlgorithmConfig']);
     Route::post('/admin/algorithm/config', [App\Http\Controllers\AdminController::class, 'setAlgorithmConfig']);
+    // Ads/Boost admin
+    Route::get('/admin/ads/campaigns', [App\Http\Controllers\AdminAdsController::class, 'allCampaigns']);
+    Route::put('/admin/ads/{id}/approve', [App\Http\Controllers\AdminAdsController::class, 'approve']);
+    Route::put('/admin/ads/{id}/reject', [App\Http\Controllers\AdminAdsController::class, 'reject']);
+    Route::put('/admin/ads/{id}/pause', [App\Http\Controllers\AdminAdsController::class, 'pause']);
+});
+// Advertiser endpoints
+Route::middleware('auth:sanctum')->group(function(){
+    Route::post('/ads/campaign', [App\Http\Controllers\AdsController::class,'create']);
+    Route::get('/ads/campaigns', [App\Http\Controllers\AdsController::class,'campaigns']);
+    Route::post('/ads/{id}/impression', [App\Http\Controllers\AdsController::class,'trackImpression']);
+    Route::post('/ads/{id}/click', [App\Http\Controllers\AdsController::class,'trackClick']);
 });
