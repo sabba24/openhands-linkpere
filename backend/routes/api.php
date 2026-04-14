@@ -77,6 +77,9 @@ Route::post('/comment/emoji', [\App\Http\Controllers\CommentEmojiReactionControl
     Route::get('/seller/orders', [App\Http\Controllers\MarketplaceController::class, 'sellerOrders'])->middleware('role:seller');
     Route::get('/seller/products', [App\Http\Controllers\MarketplaceController::class, 'sellerProducts'])->middleware('role:seller');
 });
+// Comment moderation route
+Route::post('/comments', [App\Http\Controllers\CommentController::class, 'store'])->middleware('auth:sanctum');
+
 
 // ADMIN
 Route::middleware(['auth:sanctum','role:admin'])->group(function() {

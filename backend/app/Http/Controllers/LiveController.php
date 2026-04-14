@@ -31,6 +31,13 @@ class LiveController extends Controller {
         return response()->json($session);
     }
     public function chat($id, Request $request) {
+        $userId = $request->user()->id;
+        $text = $request->msg;
+        $result = \App\Services\ModerationService::autoModerateUser($userId, $text);
+        if ($result === 'spam') {
+            return response()->json(['error'=>'Message flagged by moderation.'], 403);
+        }
+
         $log = LiveLog::create([
             'live_session_id' => $id,
             'type' => 'chat',

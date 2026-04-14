@@ -10,5 +10,5 @@ class Comment extends Model
     public function voiceNote() { return $this->hasOne(CommentVoiceNote::class); }
     public function gif() { return $this->hasOne(CommentGif::class); }
     public function emojiReactions() { return $this->hasMany(CommentEmojiReaction::class); }
-    //
+    protected $fillable = [ 'user_id', 'post_id', 'text' ];
 }
