@@ -87,4 +87,9 @@ Route::middleware(['auth:sanctum','role:admin'])->group(function() {
     Route::post('/admin/moderate/post/{id}', [App\Http\Controllers\AdminController::class, 'moderatePost']);
     Route::get('/admin/storage/providers', [App\Http\Controllers\AdminController::class, 'storageProviders']);
     Route::post('/admin/storage/set-provider', [App\Http\Controllers\AdminController::class, 'setStorageProvider']);
+    // Moderation routes
+    Route::get('/admin/moderation/flagged-users', [App\Http\Controllers\ModerationController::class, 'flaggedUsers']);
+    Route::put('/admin/moderation/{id}/review', [App\Http\Controllers\ModerationController::class, 'review']);
+    Route::put('/admin/moderation/{id}/approve', [App\Http\Controllers\ModerationController::class, 'approve']);
+    Route::put('/admin/moderation/{id}/ban', [App\Http\Controllers\ModerationController::class, 'ban']);
 });
